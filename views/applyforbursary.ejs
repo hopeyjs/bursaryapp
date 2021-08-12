@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <!-- <a href="/dashboard">Dashboard</a>
+    <a href="/withdraw-spillover">Withdraw Spillover</a>
+    <a href="/withdraw-referral">Withdraw Referral</a>
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a> -->
+</div>
+
+<!-- Page content -->
+<div class="content">
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 id="black">Apply For Bursary</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="col-lg-8 mt-5 mt-lg-0 reg">
+                    <div>
+                        <%if(message) {%>
+                            <p> <%= message %> </p>
+                        <%}%>
+
+                    </div>
+                    <div class="m-3">
+                        Dear, Please Fill in your application details below
+                    </div>
+
+                    <form action="/withdraw-referral" method="POST" role="form" class="form" data-aos="fade-left">
+                        <div class="form-row">
+                            <div class="col-lg-12 form-group">
+                                <input type="text" name="account_name" class="form-control" placeholder="Title For Application... (E.g Application for.....??)" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-12 form-group">
+                                <input type="text" name="account_name" class="form-control" placeholder="Title For Application... (E.g Application for.....??)" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-12 form-group">
+                                <input type="text" name="account_number" class="form-control" id="account_number" placeholder="Amount Needed" required>
+                            </div>
+                        </div>
+                        <textarea name="description" rows="4" cols="87" maxlength="150" placeholder="In brief, why should we give you this bursary?"></textarea>
+                            <div class="text-center form"><button type="submit">Submit Application</button></div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+</div>
+
+<%- include('partials/footer') %>

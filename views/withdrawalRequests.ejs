@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/withdraw-spillover">Withdraw Spillover</a>
+    <a href="/withdraw-referral">Withdraw Referral</a>
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+    
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 id="black">withdrawal Requests</h2>
+            <p class="btn-success btn-lg" id="white">Total Withdrawal Requests: <%= request_count %> </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <h4>Recent Withdraw Requests</h4>
+                </div>
+                <div class="row col-sm-12">
+                  <table id="withdrawalRequests" class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th scope="col">Bank Name</th>
+                              <th scope="col">Account Number</th>
+                              <th scope="col">Amount</th>
+                              <th scope="col">Account Name</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <% for (request of requests) {%>
+                          <tr>
+                              <td> <%= request.bank_name %> </td>
+                              <td> <%= request.account_number %></td>
+                              <td> <%= request.amount * 3935897.4359 %> </td>
+                              <td> <%= request.account_name %> </td>
+                          </tr>
+                          <% } %>
+                      </tbody>
+                    </table>
+                    <% const date = new Date().toDateString()%>
+                    <% const filename = `Withdrawal Requests ${date}` %>
+  
+                        <button class="btn btn-success" id="download-report"
+                            onclick="exportTableToExcel('withdrawalRequests', '<%= filename %>' )">Export To
+                            Excel</button>
+                </div>
+            </div>
+        </div>
+</section><!-- End Contact Section -->
+</div>
+
+
+<%- include('partials/footer') %>

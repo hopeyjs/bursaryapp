@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/withdraw-spillover">Withdraw Spillover</a>
+    <a href="/withdraw-referral">Withdraw Referral</a>
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<!-- Page content -->
+<div class="content">
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+
+<div class="container">
+        <div class="section-title">
+            <h2 id="black">My Profile</h2>
+            <p>Edit & Update Profile</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="col-lg-8 mt-5 mt-lg-0 reg">
+                <form action="/profile" method="PUT" role="form" class="form" data-aos="fade-left">
+                    <div class="form-row">
+                        <div class="col-lg-12 form-group">
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Username" value="<%= user.username %>" disabled>
+                        </div>
+                        <div class="col-lg-12 form-group">
+                            <input type="text" class="form-control" name="fullName" id="fullName"
+                                placeholder="Full Name" value="<%= user.fullName %>" disabled>
+                        </div>
+                    <div class="col-lg-12 form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="<%= user.email %>" disabled>
+                    </div>
+                    <!-- <div class="col-lg-12 form-group">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                    </div> -->
+                    <!-- <div class="text-center"><button type="submit">Update Profile</button></div> -->
+                </form>
+
+            </div>
+
+        </div>
+</div> 
+
+</section><!-- End Contact Section -->
+
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<!-- The sidebar -->
+<div class="sidebar">
+    <!-- <a href="/dashboard">Dashboard</a>
+    <a href="/withdraw-spillover">Withdraw Spillover</a>
+    <a href="/withdraw-referral">Withdraw Referral</a>
+    <a href="/profile">Profile</a>
+    <a href="/logout">Logout</a> -->
+</div>
+
+<!-- Page content -->
+<div class="content">
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 id="black">Apply For Bursary</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="col-lg-8 mt-5 mt-lg-0 reg">
+                    <div>
+                        <%if(message) {%>
+                            <p> <%= message %> </p>
+                        <%}%>
+                    </div>
+                    <div>
+                        1. Administrate fee of N1050 is required.
+                    </div>
+                    <div class="text-center mt-5">
+                        <a class="btn btn-lg btn-success link-light"> APPLY HERE </a>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+</div>
+
+<%- include('partials/footer') %>

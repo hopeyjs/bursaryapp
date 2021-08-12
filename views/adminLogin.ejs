@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 id="black">Welcome Admin</h2>
+            <p>Pls login with your admin id</p>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="col-lg-8 mt-5 mt-lg-0 reg">
+                    <div>
+                        <%if(message) {%>
+                            <p> <%= message %> </p>
+                        <%}%>
+
+                    </div>
+
+                <form action="/adminlogin" method="POST" role="form" class="form" data-aos="fade-left">
+                    <div class="form-row">
+                        <div class="col-lg-12 form-group">
+                            <input type="text" name="adminId" class="form-control" id="adminId" placeholder="Admin ID" required>
+                        </div>
+                    <div class="text-center form"><button type="submit">Login</button></div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+<%- include('partials/footer') %>

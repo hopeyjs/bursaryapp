@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 id="black">Admin Dashboard</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="col-lg-8 mt-5 mt-lg-0 reg">
+                    <div>
+                        <%if(invite) {%>
+                            <p> <%= invite %> </p>
+                        <%}%>
+                        
+                        <%if(message) {%>
+                        <p> <%= message %> </p>
+                        <%}%>
+                        
+                    </div>
+                    <div>
+                        <p>Total Members</p>
+                        <p><%= total_members %></p>
+                    </div>
+                    <div >
+                        <p>Total Admins</p>
+                        <p><%= total_admins %></p>
+                    </div>
+                <div class="text-center form">
+                    <form action="/registrationcode" method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-12 form-group">
+                                <input type="text" name="adminId" class="form-control" id="adminId"
+                                    placeholder="Enter Your Admin ID To Generate a Registration Code" required>
+                            </div>
+                        </div>
+                        <div class="text-center form"><button type="submit">Generate Code</button>
+                                                    </div>
+
+                    </form>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+<%- include('partials/footer') %>
