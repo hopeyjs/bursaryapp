@@ -63,6 +63,11 @@ exports.login = async (req, res) => {
     });
 };
 
+exports.logout = (req, res) => {
+  res.clearCookie("token");
+  return res.redirect("/");
+};
+
 // show signup page
 exports.signupPage = (req, res) => {
   return res.status(200).render("signup", {
@@ -70,21 +75,15 @@ exports.signupPage = (req, res) => {
   });
 };
 
-exports.logout = (req, res) => {
-  res.clearCookie("token");
-  return res.redirect("/");
-};
-
 // create User
 exports.signup = async (req, res) => {
   // define variables
   let user = {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    fullname: req.body.fullname,
     email: req.body.email,
     phone: req.body.phone,
     gender: req.body.gender,
-    marital_status: req.body.marital,
+    marital_status: req.body.marital_status,
     age: req.body.age,
     verification_code: await Verification.generateCode(),
     password: await crypt.encrypt(req.body.password),
@@ -92,7 +91,8 @@ exports.signup = async (req, res) => {
 
   // create user
   User.create(user)
-    .then((user) => {
+    .then(async (user) => {
+      console.log("user created")
       // set token
       let token = jwt.sign(
         {
@@ -114,14 +114,22 @@ exports.signup = async (req, res) => {
 
       // send mail verification code to user's mail
       // define the mail options
-      const mail = {
-        from: "Bursary <support@netwareitsolutions.com>",
-        to: user.email,
-        subject: "Welcome To The Bursary",
-        text: `Please use ${user.verification_code} to verify your email.`,
-      };
+      
+      try {
+        const mail = {
+          from: "Bursary <itsopeyemit@gmail.com>",
+          to: user.email,
+          subject: "Welcome To The Bursary",
+          text: `Please use ${user.verification_code} to verify your email.`,
+        };
 
-      Mailer.sendMail(mail);
+         await Mailer.sendMail(mail);
+      } catch (err) {
+        return res.render("dashboard", {
+          message: "Verification Mail not sent, please contact support"
+        })
+      }
+    
 
       // send Account Details Sms
       let options = {
@@ -134,7 +142,7 @@ exports.signup = async (req, res) => {
       };
       //    SMSEngine.sendSMS(options);
 
-      return res.status(201).render("index", {
+      return res.status(201).render("mailverify", {
         message:
           "Your account has been created, a verification code has been sent to your email, please use the code to verify your email or click the link provided below to verify your email.",
       });
@@ -189,3 +197,10 @@ exports.verifyMail = async (req, res) => {
     });
   }
 };
+
+
+exports.contact = (req, res) => {
+  return res.render("contact", {
+    message: ""
+  })
+}

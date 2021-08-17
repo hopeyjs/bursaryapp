@@ -14,6 +14,9 @@ const BursaryController = require("./controllers/bursary/bursary.controller");
 // home page
 app.get("/", AuthController.home);
 
+// contact page
+app.get("/contact", AuthController.contact);
+
 // authentication
 app.get("/login", AuthController.loginPage);
 app.post("/login", AuthController.login);

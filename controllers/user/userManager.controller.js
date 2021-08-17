@@ -118,7 +118,9 @@ exports.moreInfo = async (req, res) => {
 // show user dashboard
 exports.dashboard = async (req, res) => {
   try {
-    return res.status(200).render("dashboard", {});
+    return res.status(200).render("dashboard", {
+      message: ""
+    });
   } catch (err) {
     return res.status(200).render("dashboard", {});
   }

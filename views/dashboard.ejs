@@ -1,8 +1,14 @@
 <%- include('partials/header') %>
 
 <div class="col-10 dashboard-content">
+  <%if(message != "") {%>
+    <div class="alert alert-primary" role="alert">
+      <p> <%= message %> </p>
+    </div>
+    <%}%>
+
   <div class="shadow cards-wrapper">
-    <div class="card card-shadow">Apply For Bursary</div>
+    <div class="card card-shadow" onclick="">Apply For Bursary</div>
     <div class="card card-shadow">Application Status</div>
     
     <div class="card card-shadow">Recent Applications</div>
